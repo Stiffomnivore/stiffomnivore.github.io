@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CSS Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    .side-by-side-container {
+  display: flex; /* Use flexbox to create a side-by-side layout */
+}
+
+.left-column {
+  flex: 1; /* Left column takes 50% of the width */
+  padding: 20px; /* Add padding for better spacing */
+}
+
+.right-column {
+  flex: 1; /* Right column takes 50% of the width */
+  padding: 20px; /* Add padding for better spacing */
+}
+
+/* Add additional styles as needed */
+
+
+.paragraph-container p {
+  flex: 1; /* Each paragraph takes equal width */
+  margin: 10px; /* Add margin between paragraphs */
+  padding: 10px; /* Optional: Add padding for better spacing */
+}
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0; /* Remove default margin */
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Style the header */
+    header {
+      background-image:"https://giphy.com/embed/xT9IgioE60R9797Uc0";
+      padding: 30px;
+      text-align: center;
+      font-size: 35px;
+      color: white;
+    }
+    footer{
+      width:100;
+      color:#666;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://media.giphy.com/media/xT9IgioE60R9797Uc0/giphy.gif'); /* Replace with your Giphy GIF URL */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: brightness(50%); /* Adjust brightness as needed */
+      z-index: -1; /* Place the background behind the content */
+    }
+
+    /* Create two columns/boxes that float next to each other */
+    nav {
+      float: right;
+      width: 100%;
+      height: 100vh; /* Use viewport height for full height */
+      background: #ffffff;
+      padding: 20px;
+      overflow-y: auto; /* Add vertical scrollbar if needed */
+    }
+    section {
+      float: right;
+      width: 30%;
+      height: 100vh; /* Use viewport height for full height */
+      background: #ffffff;
+      padding: 20px;
+      overflow-y: auto; /* Add vertical scrollbar if needed */
+    }
+
+    /* Style the list inside the menu */
+    section ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    article ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    article {
+      float: left;
+      padding: 20px;
+      width: 70%;
+      background-color: #f1f1f1;
+      min-height: 100vh; /* Use viewport height for full height */
+    }
+
+    /* Clear floats after the columns */
+    section::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    article ul {
+        list-style-type:circle
+    }
+
+    /* Style the scroll button */
+    .scroll-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #666;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @media only screen and (max-width: 768px) {
+  /* Styles for screens with a maximum width of 768 pixels (adjust as needed) */
+  .side-by-side-container {
+    flex-direction: column; /* Stack columns vertically on smaller screens */
+  }
+  .left-column, .right-column {
+    flex: auto; /* Allow columns to take full width */
+  }
+  img {
+  max-width: 100%;
+  height: auto;
+}
+.fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .fraction div {
+            border-top: 1px solid #000000;
+            padding: 2px;
+        }
+
+        .fraction .numerator {
+            display: block;
+        }
+
+        .fraction .denominator {
+            display: block;
+        }
+
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Rotational Motion Reviewer</h2>
+  </header>
+
+  <section>
+        <div class="question-container">
+            <!-- Question 1 -->
+            <div class="question">
+                <p>a. What is the SI unit for angular velocity?</p>
+                <ul class="options">
+                    <li><input type="radio" name="What is the SI unit for angular velocity?" value="a"> a) meters per second (m/s)</li>
+                    <li><input type="radio" name="What is the SI unit for angular velocity?" value="b"> b) radians per second (rad/s)</li>
+                    <li><input type="radio" name="What is the SI unit for angular velocity?" value="c"> c) degrees per second (°/s)</li>
+                    <li><input type="radio" name="What is the SI unit for angular velocity?" value="d"> d) revolutions per minute (rpm)</li>
+                </ul>
+                <!-- Correct Answer for Question 1 -->
+                <div class="answer-container" id="answer1">
+                </div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <!-- Question 2 -->
+            <div class="question">
+                <p>b. Which of the following is a measure of rotational inertia?</p>
+                <ul class="options">
+                    <li><input type="radio" name="Which of the following is a measure of rotational inertia?" value="a"> a) Mass</li>
+                    <li><input type="radio" name="Which of the following is a measure of rotational inertia?" value="b"> b) Acceleration</li>
+                    <li><input type="radio" name="Which of the following is a measure of rotational inertia?" value="c"> c) Moment of inertia</li>
+                    <li><input type="radio" name="Which of the following is a measure of rotational inertia?" value="d"> d) Torque</li>
+                </ul>
+                <!-- Correct Answer for Question 2 -->
+                <div class="answer-container" id="answer2">
+                    <button onclick="submitQuiz()">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div id="quiz-results">
+            <!-- Quiz Results will be displayed here -->
+        </div>
+        
+        <script>
+            // Function to submit the quiz and calculate the score
+            function submitQuiz() {
+                // Object containing correct answers for each question
+                const correctAnswers = {
+                    "What is the SI unit for angular velocity?": 'b', // Correct answer for Question 1
+                    "Which of the following is a measure of rotational inertia?": 'c', // Correct answer for Question 2
+                    
+                    // Add more questions and answers as needed
+                };
+        
+                // Initialize score variable
+                let score = 0;
+                // Object to store user's selected answers
+                let userAnswers = {};
+        
+                // Loop through each question in the correctAnswers object
+                for (const currentQuestion in correctAnswers) {
+                    // Get the selected option for the current question
+                    const selectedOption = document.querySelector(`input[name="${currentQuestion}"]:checked`);
+                    
+                    // Check if an option is selected
+                    if (selectedOption) {
+                        // Get the value (user's answer) of the selected option
+                        const userAnswer = selectedOption.value;
+                        // Store the user's answer in the userAnswers object
+                        userAnswers[currentQuestion] = userAnswer;
+        
+                        // Check if the user's answer is correct
+                        if (userAnswer === correctAnswers[currentQuestion]) {
+                            // Increment the score if the answer is correct
+                            score++;
+                        }
+                    }
+                }
+        
+                // Display correct answers and user's score
+                let resultMessage = '<h3>Quiz Results</h3>';
+                for (const currentQuestion in correctAnswers) {
+                    // Display correct and user's answers for each question
+                    resultMessage += `<p><strong>${currentQuestion}:</strong> Correct Answer - ${correctAnswers[currentQuestion]}, Your Answer - ${userAnswers[currentQuestion] || 'Not answered'}</p>`;
+                }
+                // Display the final score
+                resultMessage += `<p><strong>Your score:</strong> ${score} out of ${Object.keys(correctAnswers).length}</p>`;
+        
+                // Display the quiz results in the 'quiz-results' element
+                document.getElementById('quiz-results').innerHTML = resultMessage;
+            }
+        </script>
+              
+      <button class="scroll-button" onclick="scrollToBottom()">Scroll to Bottom</button>
+</section>
+
+    <article>
+        <div class="side-by-side-container">
+            <div class="left-column">
+              <h2>Rotational Motion</h2>
+              <h1>Angular Position (θ)</h1>
+              <ul>
+                <li>Refers to the orientation of a rotating object in free space.</li>
+                <li>Applicable to circles and rotational motion.</li>
+                <li>Represents the direction of the displacement vector from the origin to the location of the revolving object.</li>
+                <li>Unit is in radians (rad), equivalent to fractional values of π.</li>
+                <li>To convert values from degrees to radians, use the appropriate conversion factor.</li>
+              </ul>
+              <h1>Radians to Degrees Conversion</h1>
+              <p>To convert radians to degrees, use the formula:<br>
+              degrees = radians * (180 / π)<br>
+              For example, if you have an angle of π/2 radians:<br>
+              degrees = (π/2) * (180 / π) ≈ 90°<br>
+              <strong>or</strong> <br>
+              This can be represented in π = 180 degrees. <br>
+              Step by step:</p>
+              <p>Step 1: Write the problem π/2. <br>
+              Step 2: Replace π with 180 degrees: π/2 -> 180/2 = 90 Degrees <br>
+              </p>
+              <p><strong>Do not forget to write the degree sign</strong></p> 
+            </div>
+        
+            <div class="right-column">
+              <h1>Rotation Vs Revolution</h1>
+              <img decoding="async" alt="rotation revolution" itemprop="image" height="300" width="370" data-src="https://stickmanphysics.com/wp-content/uploads/2019/11/Rotation-and-Revolution.gif" class="fl-photo-img wp-image-1821 size-full lazyloaded" src="https://stickmanphysics.com/wp-content/uploads/2019/11/Rotation-and-Revolution.gif" title="Rotation-and-Revolution">
+              <p><strong>Rotation:</strong>
+              <ul>
+                <li>Spinning movement without changing position.</li>
+                <li>Example: Top spinning or Earth's day and night.</li>
+              </ul>
+              <strong>Revolution:</strong>
+              <ul>
+                <li>Movement around an axis.</li>
+                <li>Example: Object moving around a point or axis.</li></p>
+              </ul>
+            </div>
+          </div>
+          <hr>         
+          <div class="side-by-side-container">
+
+            <div class="left-column">
+              <img src="http://hyperphysics.phy-astr.gsu.edu/hbase/imgmec/rq1.gif">
+          
+              <div class="formula">
+                <strong>Formula:</strong>
+                <br>
+                <span>&Delta;x = &Delta;&theta; &times; R</span>
+                <br>
+                <small>Where &Delta;x is the arc displacement (SI unit), &Delta;&theta; is the angular displacement (SI unit), and R is the radius (SI unit).</small>
+              </div>
+            </div>
+          
+            <div class="right-column">
+              <div class="problem">
+                <strong>Problem:</strong>
+                <br>
+                An object rotates counterclockwise on a circular path with a radius of 2 meters. The initial angular displacement is 30 degrees, and it rotates to a final angular displacement of 150 degrees. Calculate the arc displacement.
+                <br><br>
+                <strong>Given:</strong>
+                <ul>
+                  <li>Initial Angular Displacement (&Delta;&theta;<sub>initial</sub>): 30 degrees</li>
+                  <li>Final Angular Displacement (&Delta;&theta;<sub>final</sub>): 150 degrees</li>
+                  <li>Radius (R): 2 meters</li>
+                </ul>
+                <br>
+                <strong>Solution:</strong>
+                <br>
+                <span>&Delta;x = (&Delta;&theta;<sub>final</sub> - &Delta;&theta;<sub>initial</sub>) &times; R</span>
+                <br>
+                <span>&Delta;x = (150° - 30°) &times; 2m</span>
+                <br>
+                <span>&Delta;x = 120° &times; 2m = 240 meters</span>
+                <br><br>
+                <strong>Arc Displacement:</strong> The object covers an arc displacement of 240 meters.
+              </div>
+          
+              <div class="problem-angular velocity">
+                <strong>Example Problem:</strong>
+                <br>
+                An object rotates counterclockwise, starting from an initial angular displacement of 30&deg; to a final angular displacement of 150&deg; in a time interval of 5 seconds. Calculate the angular velocity.
+                <br><br>
+                <strong>Given:</strong>
+                <ul>
+                  <li>Initial Angular Displacement (&theta;<sub>initial</sub>): 30&deg;</li>
+                  <li>Final Angular Displacement (&theta;<sub>final</sub>): 150&deg;</li>
+                  <li>Time Interval (&Delta;t): 5 seconds</li>
+                </ul>
+                <br>
+                <strong>Solution:</strong>
+                <br>
+                <span>&omega; = &theta;<sub>final</sub> - &theta;<sub>initial</sub> / &Delta;t</span>
+                <br>
+                <span>&omega; = 150&deg; - 30&deg;/ seconds</span>
+                <br>
+                <span>&omega; = 120&deg;/5 seconds = 24&deg;/second</span>
+                <br><br>
+                <strong>Angular Velocity:</strong> The object has an angular velocity of 24&deg;/second.
+                <br>
+                <strong>Convention:</strong> Counterclockwise is considered positive, and clockwise is considered negative.
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="side-by-side-container">
+            <div class="left-column">
+                <h2>Velocity Word Problem</h2>
+                <div class="problem">
+                    <p>Calculate velocity, using the circumference over time.</p>
+                    <ul>
+                        <li>Formula for: \(V (\text{m/s}) = \frac{C}{T}\)</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="right-column">
+                <h1>Velocity Word Problem</h1>
+                <div class="problem">
+                    <p>You are riding a bicycle with a wheel that has a circumference of <strong>2 meters</strong>.</p>
+                    <p>If you travel for <strong>10 seconds</strong>, what is your <strong>velocity</strong>?</p>
+                    <p>Calculate the velocity using the formula: <strong>velocity = circumference / time</strong>.</p>
+        
+                    <button onclick="calculateVelocity()">Calculate Velocity</button>
+        
+                    <p id="velocityResult"></p>
+                </div>
+        
+                <script>
+                    function calculateVelocity() {
+                        // Given values
+                        var circumference = 2; // in meters
+                        var time = 10; // in seconds
+        
+                        // Explanation
+                        var explanation = "Given values: Circumference = " + circumference + " meters, Time = " + time + " seconds.";
+        
+                        // Calculate velocity using the formula velocity = circumference / time
+                        var velocity = circumference / time;
+        
+                        // Display the result with explanation
+                        document.getElementById('velocityResult').innerHTML = explanation + "<br>Your velocity is: " + velocity.toFixed(2) + " m/s.";
+                    }
+                </script>
+            </div>
+        </div>
+        
+        <div class="side-by-side-container">
+            <div class="left-column">
+                <h2>Angular Acceleration Word Problem</h2>
+                <div class="problem">
+                    <p>Formula for angular acceleration: \(\alpha = \frac{\Delta\omega}{\Delta T}\)</p>
+                </div>
+            </div>
+        
+            <div class="right-column">
+                <h1>Angular Acceleration Word Problem</h1>
+                <div class="problem">
+                    <p>An object undergoes rotational motion with an initial angular velocity of <strong>30 radians per second</strong>.</p>
+                    <p>If its final angular velocity is <strong>60 radians per second</strong> after <strong>5 seconds</strong>, what is the <strong>angular acceleration</strong>?</p>
+                    <p>Calculate the angular acceleration using the formula: <strong>angular acceleration = change in angular velocity / time</strong>.</p>
+        
+                    <button onclick="calculateAngularAcceleration()">Calculate Angular Acceleration</button>
+        
+                    <p id="angularAccelerationResult"></p>
+                </div>
+        
+                <script>
+                    function calculateAngularAcceleration() {
+                        // Given values
+                        var initialAngularVelocity = 30; // in radians per second
+                        var finalAngularVelocity = 60; // in radians per second
+                        var time = 5; // in seconds
+        
+                        // Explanation
+                        var explanation = "Given values: Initial Angular Velocity = " + initialAngularVelocity + " rad/s, Final Angular Velocity = " + finalAngularVelocity + " rad/s, Time = " + time + " seconds.";
+        
+                        // Calculate angular acceleration using the formula angular acceleration = change in angular velocity / time
+                        var deltaAngularVelocity = finalAngularVelocity - initialAngularVelocity;
+                        var angularAcceleration = deltaAngularVelocity / time;
+        
+                        // Display the result with explanation
+                        document.getElementById('angularAccelerationResult').innerHTML = explanation + "<br>The calculated angular acceleration is: " + angularAcceleration.toFixed(2) + " rad/s².";
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="side-by-side-container">
+          <div class="left-column">
+              <h2>Tangential Acceleration Word Problem</h2>
+              <div class="problem">
+                  <p>Formula for angular acceleration using tangential acceleration: \(\alpha = \frac{a}{r}\)</p>
+                  <p>Where: "a" is the <strong>tangential acceleration (m/s²)</strong>, "<em>&alpha;</em>" is angular acceleration (rad/second²), and "<em>r</em>" is the radius commonly measured as (meters or m)</p>
+                  <p><strong>Note that angular acceleration, tangential acceleration, and centripetal acceleration are not the same thing!</strong></p>
+              </div>
+          </div>
+      
+          <div class="right-column">
+              <h1>Tangential Acceleration Word Problem</h1>
+              <div class="problem">
+                  <p>An object is moving in a circular path with a tangential acceleration of <strong>5 m/s²</strong> and a radius of <strong>3 meters</strong>.</p>
+                  <p>What is the <strong>angular acceleration</strong> of the object?</p>
+                  <p>Calculate the angular acceleration using the formula: <strong>angular acceleration = tangential acceleration / radius</strong>.</p>
+      
+                  <button onclick="calculateAngularAccelerationFromTangential()">Calculate Angular Acceleration</button>
+      
+                  <p id="angularAccelerationFromTangentialResult"></p>
+              </div>
+      
+              <script>
+                  function calculateAngularAccelerationFromTangential() {
+                      // Given values
+                      var tangentialAcceleration = 5; // in meters per second squared
+                      var radius = 3; // in meters
+      
+                      // Explanation
+                      var explanation = "Given values: Tangential Acceleration = " + tangentialAcceleration + " m/s², Radius = " + radius + " meters.";
+      
+                      // Calculate angular acceleration using the formula angular acceleration = tangential acceleration / radius
+                      var angularAccelerationFromTangential = tangentialAcceleration / radius;
+      
+                      // Display the result with explanation
+                      document.getElementById('angularAccelerationFromTangentialResult').innerHTML = explanation + "<br>The calculated angular acceleration is: " + angularAccelerationFromTangential.toFixed(2) + " rad/s².";
+                  }
+              </script>
+          </div>
+      </div>
+      
+      <div class="side-by-side-container">
+          <div class="left-column">
+              <h2>Solving by Relating it to Angular Velocity</h2>
+              <div class="problem">
+                  <p>Formula: \(\alpha = \frac{\omega^2}{r}\)</p>
+                  <p>Where: "<em>&alpha;</em>" is the angular acceleration (SI unit: rad/s²), "<em>&omega;</em>" is the angular velocity (SI unit: rad/s), and "<em>r</em>" is the radius (SI unit: m)</p>
+              </div>
+          </div>
+      
+          <div class="right-column">
+              <h1>Solving by Relating it to Angular Velocity</h1>
+              <div class="problem">
+                  <p>An object is rotating with an angular velocity of <strong>40 radians per second</strong> in a circle with a radius of <strong>4 meters</strong>.</p>
+                  <p>What is the <strong>angular acceleration</strong> of the object?</p>
+                  <p>Calculate the angular acceleration using the formula: <strong>angular acceleration = angular velocity² / radius</strong>.</p>
+      
+                  <button onclick="calculateAngularAccelerationFromAngularVelocity()">Calculate Angular Acceleration</button>
+      
+                  <p id="angularAccelerationFromAngularVelocityResult"></p>
+              </div>
+      
+              <script>
+                  function calculateAngularAccelerationFromAngularVelocity() {
+                      // Given values
+                      var angularVelocity = 40; // in radians per second
+                      var radius = 4; // in meters
+      
+                      // Explanation
+                      var explanation = "Given values: Angular Velocity = " + angularVelocity + " rad/s, Radius = " + radius + " meters.";
+      
+                      // Calculate angular acceleration using the formula angular acceleration = angular velocity^2 / radius
+                      var angularAccelerationFromAngularVelocity = Math.pow(angularVelocity, 2) / radius;
+      
+                      // Display the result with explanation
+                      document.getElementById('angularAccelerationFromAngularVelocityResult').innerHTML = explanation + "<br>The calculated angular acceleration is: " + angularAccelerationFromAngularVelocity.toFixed(2) + " rad/s².";
+                  }
+              </script>
+          </div>
+      </div>
+      
+      <div class="side-by-side-container">
+          <div class="left-column">
+              <h2>Uniform Circular Motion</h2>
+              <div class="problem">
+                  <p>Formula: \(\alpha = 4 \cdot \pi^2\frac{r}{t^2}\)</p>
+                  <p>Where: "<em>&pi;</em>"(3.14), "<em>r</em>" is the radius (si unit: m ), and "<em>t</em>" is the time (si unit: s)</p>
+              </div>
+          </div>
+      
+          <div class="right-column">
+              <h1>Uniform Circular Motion</h1>
+              <div class="problem">
+                  <p>An object is in uniform circular motion with a radius of <strong>6 meters</strong>. If the time period is <strong>2 seconds</strong>, calculate the <strong>angular acceleration</strong>.</p>
+                  <p>Use the formula: <strong>angular acceleration = 4π²r / t²</strong>.</p>
+      
+                  <button onclick="calculateAngularAccelerationUniformCircularMotion()">Calculate Angular Acceleration</button>
+      
+                  <p id="angularAccelerationUniformCircularMotionResult"></p>
+              </div>
+      
+              <script>
+                  function calculateAngularAccelerationUniformCircularMotion() {
+                      // Given values
+                      var radius = 6; // in meters
+                      var timePeriod = 2; // in seconds
+      
+                      // Explanation
+                      var explanation = "Given values: Radius = " + radius + " meters, Time Period = " + timePeriod + " seconds.";
+      
+                      // Calculate angular acceleration using the formula angular acceleration = 4π²r / t²
+                      var angularAccelerationUniformCircularMotion = (4 * Math.pow(Math.PI, 2) * radius) / Math.pow(timePeriod, 2);
+      
+                      // Display the result with explanation
+                      document.getElementById('angularAccelerationUniformCircularMotionResult').innerHTML = explanation + "<br>The calculated angular acceleration is: " + angularAccelerationUniformCircularMotion.toFixed(2) + " rad/s².";
+                  }
+              </script>
+          </div>
+      </div>
+      <hr>
+      <div class="side-by-side-container">
+        <div class="left-column">
+            <h1>Summary</h1>
+            <h0>Angular Position</h0>
+            <p><code>&theta; = <sup>d</sup>&frasl;<sub>r</sub></code></p>
+    
+            <h0>Angular Displacement</h0>
+            <p><code>&Delta;&theta; = <sup>&Delta;x</sup>&frasl;<sub>r</sub></code></p>
+    
+            <h0>Angular Velocity</h0>
+            <p><code>&omega; = <sup>&Delta;&theta;</sup>&frasl;<sub>t</sub></code></p>
+            <p><code>&omega; = <sup>v</sup>&frasl;<sub>r</sub></code></p>
+    
+            <h0>Linear Velocity</h0>
+            <p><code>v = <sup>C</sup>&frasl;<sub>t</sub></code> or <code>v = <sup>2&pi;r</sup>&frasl;<sub>t</sub></code></p>
+    
+            <h0>Tangential Velocity</h0>
+            <p>Tangential Velocity: <code>v<sub>t</sub> = &omega; &middot; r</code></p>
+            <p>Tangential Velocity: <code>v<sub>t</sub> = <sup>&Delta;&theta;</sup>&frasl;<sub>t</sub></code></p>
+    
+            <h0>Angular Acceleration</h0>
+            <p><code>&alpha; = <sup>&Delta;&omega;</sup>&frasl;<sub>t</sub></code></p>
+            <p><code>&alpha; = <sup>A<sub>tangential</sub></sup>&frasl;<sub>r</sub></code></p>
+            <p><code>&alpha; = <sup>&omega;<sup>2</sup></sup>&frasl;<sub>r</sub></code></p>
+            <p><code>&alpha; = <sup>4&pi;<sup>2</sup>r</sup>&frasl;<sub>t<sup>2</sup></sub></code></p>
+        </div>
+        <div class="side-by-side-container">
+        <div class="right-column">
+            <h0>I. Angular Position (θ)</h0>
+            <p><strong>A. Definition</strong></p>
+            <p>Denotes orientation of a rotating object.</p>
+            <p>Represents direction of displacement vector.</p>
+            <p><strong>B. Unit</strong></p>
+            <p>Radians (π-equivalent).</p>
+            <p>Conversion: degrees to radians.</p>
+
+            <h0>II. Rotation and Revolution</h0>
+            <p><strong>A. Rotation</strong></p>
+            <p>Spinning movement without leaving position.</p>
+            <p>Example: top spinning in place.</p>
+            <p><strong>B. Revolution</strong></p>
+            <p>Movement around an axis.</p>
+            <p>Example: Earth's rotation leading to day and night.</p>
+            <h0>III. Angular Displacement (Δθ)</h0>
+            <0>Measurement of angle rotated.</0>
+            <p>Similar to linear displacement (Δx).</p>
+            <h0>IV. Angular Velocity (ω)</h0>
+            <p><strong>A. Definition</strong></p>
+            <p>Rate of change in an object's position.</p>
+            <p>Measures change in angular displacement per unit time.</p>
+            <p><strong>B. Relationship with Linear Velocity</strong></p>
+            <p>Formula involving radius.</p>
+            <h0>VI. Angular Acceleration (α)</0>
+            <p><strong>A. Definition</strong></p>
+            <p>Changes in an object's angular velocity per unit time.</p>
+            <p><strong>B. Relationship with Angular Velocity</strong></p>
+            <p>Formula involving radius.</p>
+        </div>
+    </div>
+    <footer>
+    
+    </footer>
+    
+    </body>
+    </html>

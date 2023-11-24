@@ -4,129 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f0f0f0;
-            margin: 0;
-            background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)), url('https://github.com/Stiffomnivore/stiffomnivore.github.io/blob/main/nathan-anderson-L95xDkSSuWw-unsplash.jpg?raw=true') no-repeat center center fixed;
-            background-size: cover;
-        }
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    margin: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)), url('https://github.com/Stiffomnivore/stiffomnivore.github.io/blob/main/nathan-anderson-L95xDkSSuWw-unsplash.jpg?raw=true') no-repeat center center fixed;
+    background-size: cover;
+}
 
-        header {
-            width: 100%;
-            padding: 80px;
-            text-align: center;
-            background-color: #ddd;
-            justify-content: center;
-        }
+header {
+    position: relative;
+    width: 100%;
+    padding: 80px;
+    text-align: center;
+    background: transparent;
+    justify-content: center;
+}
 
-        article {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive column layout */
-            grid-gap: 20px;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: relative;
-            margin-top: 50px;
-        }
+ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center the list items horizontally */
+}
 
-        .box {
-            text-align: center;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: white;
-            width: 100%;
-            max-width: 250px;
-            height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            font-family: 'Roboto', sans-serif;
-            color: #f0f0f0;
-            font-size: 25px;
-            transition: transform 0.3s ease;
-            text-decoration: none; /* Remove default underline for anchor elements */
-            color: #f0f0f0; /* Set text color for anchor elements */
-        }
+ul li {
+    list-style-type: none;
+    margin: 0 20px;
+    position: relative;
+}
 
-        .box img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
+ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    font-size:25px
+}
 
-        /* Add a class to the specific box for Rotation Motion */
-        .box.rotationmotion {
-            background: url('https://i.gifer.com/ClX9.gif') no-repeat center;
-            background-size: cover;
-        }
+ul li a::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #f0f0f0;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: width 0.5s;
+}
 
-        .box.mechanicmotion {
-            background: url('https://64.media.tumblr.com/e9590cfdbad8abb364e27201585f0e90/tumblr_n1wtb6BZCy1s7rmpbo1_r4_500.gif') no-repeat center;
-            background-size: cover;
-        }
+ul li a:hover::after {
+    width: 100%;
+}
 
-        .box.vibrationmotion {
-            background: url('https://i.gifer.com/origin/00/0063cda8aa18cb9b72f2ae9c51938f17_w200.gif') no-repeat center;
-            background-size: cover;
-        }
+article {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: relative;
+    margin-top: 50px;
+}
 
-        .box.temperature {
-            background: url('https://i.pinimg.com/originals/b8/dd/b9/b8ddb9f9336cf61e0c7915841eac2a7e.gif') no-repeat center;
-            background-size: cover;
-        }
+.box {
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    width: 100%;
+    max-width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'roboto', sans-serif;
+    color: #f0f0f0;
+    font-size: 25px;
+    transition: transform 0.3s ease;
+}
 
-        .box.gas {
-            background: url('https://media.tenor.com/cSGf0-cG4bcAAAAd/smoke-gas.gif') no-repeat center;
-            background-size: cover;
-        }
+.box img {
+    max-width: 100%;
+    border-radius: 10px;
+}
 
-        .box:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+.box.rotationmotion {
+    background: url('https://i.gifer.com/ClX9.gif') no-repeat center;
+    background-size: cover;
+}
 
-        /* Media query for smaller screens, like phones */
-        @media only screen and (max-width: 600px) {
-            header {
-                padding: 40px;
-            }
+.box.mechanicmotion {
+    background: url('https://64.media.tumblr.com/e9590cfdbad8abb364e27201585f0e90/tumblr_n1wtb6BZCy1s7rmpbo1_r4_500.gif') no-repeat center;
+    background-size: cover;
+}
 
-            article {
-                grid-template-columns: 1fr;
-                grid-gap: 10px;
-            }
-        }
+.box.vibrationmotion {
+    background: url('https://i.gifer.com/origin/00/0063cda8aa18cb9b72f2ae9c51938f17_w200.gif') no-repeat center;
+    background-size: cover;
+}
+
+.box.temperature {
+    background: url('https://i.pinimg.com/originals/b8/dd/b9/b8ddb9f9336cf61e0c7915841eac2a7e.gif') no-repeat center;
+    background-size: cover;
+}
+
+.box.gas {
+    background: url('https://media.tenor.com/cSGf0-cG4bcAAAAd/smoke-gas.gif') no-repeat center;
+    background-size: cover;
+}
+
+.box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 600px) {
+    /* Adjust styles for screens smaller than 600px (e.g., mobile) */
+    article {
+        grid-template-columns: 1fr;
+    }
+
+    .box {
+        max-width: none;
+    }
+
+    header img {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+}
     </style>
     <title>Physics Topics</title>
 </head>
 <body>
     <header>
-        Head
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">CHEMISTRY</a></li>
+      </ul>
     </header>
     <article>
-        <a href="#" class="box mechanicmotion">
+        <div class="box mechanicmotion">
             <p>Gravity and Periodic Motion</p>
-        </a>
+        </div>
 
         <a href="./rotationalmotion.html" class="box rotationmotion"> <!-- Apply the class here -->
             <p>Rotation Motion</p>
-        </a>
+        </div>
 
-        <a href="your-link-3" class="box vibrationmotion">
+        <div class="box vibrationmotion">
             <p>Mechanics in Vibrations and Fluid</p>
-        </a>
+        </div>
 
-        <a href="your-link-4" class="box temperature">
+        <div class="box temperature">
             <p>Temperature and Heat</p>
-        </a>
+        </div>
 
-        <a href="your-link-5" class="box gas">
+        <div class="box gas">
             <p>Ideal Gas Law of Thermodynamics</p>
-        </a>
+        </div>
 
         <!-- Add more boxes as needed -->
 

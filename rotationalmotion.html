@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .quiz-container {
+            width: 60%;
+            margin: auto;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .frac {
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            letter-spacing: 0.001em;
+            text-align: center;
+        }
+
+        .frac > span {
+            display: block;
+            padding: 0.1em;
+        }
+
+        .frac span.bottom {
+            border-top: thin solid black;
+        }
+
+        .frac span.symbol {
+            display: none;
+        }
+
+        .options {
+            margin-top: 10px;
+        }
+
+        .answer-feedback {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .next-btn {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <div class="question" id="question1">
+        <p>1. Solve the following equation:</p>
+        <p>3 + <span class="frac"><span>1</span><span class="symbol">/</span><span class="bottom">4</span></span> = ?</p>
+        <div class="options">
+            <button id="option1">a) 3.25</button>
+            <button id="option2">b) 3.75</button>
+            <button id="option3">c) 4.25</button>
+            <button id="option4">d) 4.75</button>
+        </div>
+        <div class="answer-feedback" id="feedback1"></div>
+    </div>
+
+    <button class="next-btn" onclick="nextQuestion()">Next Question</button>
+</div>
+
+<script>
+    let currentQuestion = 1;
+
+    function checkAnswer(correctOption, btn) {
+        const feedback = document.getElementById(`feedback${currentQuestion}`);
+        const nextBtn = document.querySelector('.next-btn');
+
+        if (correctOption === 1) {
+            feedback.innerHTML = "Correct! Explanation: 3 + <div class='frac'><span>1</span><span class='symbol'>/</span><span class='bottom'>4</span></div> = 3.25. To solve, cross-multiply.";
+            feedback.style.color = 'green';
+        } else {
+            feedback.innerHTML = "Incorrect. Try again!";
+            feedback.style.color = 'red';
+        }
+
+        feedback.style.display = 'block';
+        btn.disabled = true;
+        nextBtn.style.display = 'block';
+    }
+
+    function nextQuestion() {
+        const currentQuestionElem = document.getElementById(`question${currentQuestion}`);
+        const nextQuestionElem = document.getElementById(`question${currentQuestion + 1}`);
+        const nextBtn = document.querySelector('.next-btn');
+
+        currentQuestionElem.style.display = 'none';
+        nextQuestionElem.style.display = 'block';
+        nextBtn.style.display = 'none';
+
+        currentQuestion++;
+    }
+
+    // Adding event listeners for both click and touch events
+    document.getElementById('option1').addEventListener('click', function() {
+        checkAnswer(1, this);
+    });
+    document.getElementById('option2').addEventListener('click', function() {
+        checkAnswer(2, this);
+    });
+    document.getElementById('option3').addEventListener('click', function() {
+        checkAnswer(3, this);
+    });
+    document.getElementById('option4').addEventListener('click', function() {
+        checkAnswer(4, this);
+    });
+
+    const touchHandler = function(event) {
+        event.preventDefault();
+        const targetButton = document.elementFromPoint(
+            event.changedTouches[0].clientX,
+            event.changedTouches[0].clientY
+        );
+        if (targetButton) {
+            targetButton.click();
+        }
+    };
+
+    document.getElementById('option1').addEventListener('touchstart', touchHandler);
+    document.getElementById('option2').addEventListener('touchstart', touchHandler);
+    document.getElementById('option3').addEventListener('touchstart', touchHandler);
+    document.getElementById('option4').addEventListener('touchstart', touchHandler);
+</script>
+
+</body>
+</html>
